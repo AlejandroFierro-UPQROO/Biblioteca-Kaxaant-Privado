@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Next.js build output
+/.next/
+/out/
+
+# Environment variables (NEVER commit these)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# PM2 logs
+logs/
+*.log
+npm-debug.log*
+
+# Build artifacts
+/build
+
+# Uploads (user content - managed separately)
+/uploads/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Backup files created during fixes
+*.bak
+
+# Package lock (keep package-lock.json, exclude yarn.lock if not used)
+yarn.lock

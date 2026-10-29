@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;600;800&display=swap');
+
+/* --- HERO BANNER --- */
+.hero-biblioteca {
+  width: 100%;
+  height: 70vh;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.slide-biblio {
+  position: relative;
+  width: 100%;
+  height: 70vh; /* Asegura que cada slide tenga la altura correcta */
+}
+
+.slide-biblio img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide-biblio::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.contenido-hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  width: 90%;
+  max-width: 1400px; /* Añadimos un max-width para que el texto no sea demasiado ancho en pantallas ultra-anchas */
+}
+
+.contenido-hero h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #f97316;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.contenido-hero h2 {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-weight: 600;
+  color: #ffffff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  background: #f97316;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+/* --- CARRUSEL DE EVENTOS (SECCIÓN CORREGIDA) --- */
+.slider-jmind {
+  background-color: #ffffff;
+  padding: 3rem 0; /* Eliminamos padding horizontal para controlar el ancho desde el contenedor */
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden; /* Previene el desbordamiento horizontal en móviles */
+}
+
+.slider-container {
+  width: 90%; /* Hacemos que el carrusel ocupe el 90% del ancho de la pantalla */
+  margin: 0 auto; /* Centramos el carrusel */
+  /* Eliminamos el max-width para que pueda ocupar más espacio */
+}
+
+.slider-container .slick-slide {
+  padding: 0 10px; /* Espacio entre las tarjetas */
+}
+
+.slider-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 250px;
+  display: block; /* Asegura que Link se comporte como bloque */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slider-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.slider-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.slider-card:hover img {
+  transform: scale(1.05);
+}
+
+.slider-hover-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 20%, transparent 100%);
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.slider-card:hover .slider-hover-box {
+  opacity: 1;
+}
+
+.slider-hover-box h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  color: #f97316;
+}
+
+.slider-hover-box p {
+  font-size: 0.9rem;
+  margin: 0.2rem 0 0;
+}
+
+/* Flechas personalizadas del carrusel */
+.slider-container .slick-prev,
+.slider-container .slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+}
+/* Ajustamos la posición de las flechas para que no se salgan en móvil */
+.slider-container .slick-prev { left: 10px; }
+.slider-container .slick-next { right: 10px; }
+
+.slider-container .slick-prev:before,
+.slider-container .slick-next:before {
+  font-size: 2.5rem;
+  color: #f97316;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.slider-container .slick-prev:hover:before,
+.slider-container .slick-next:hover:before {
+  opacity: 1;
+}
+.slider-container .slick-prev:before { content: '‹'; }
+.slider-container .slick-next:before { content: '›'; }
+
+
+/* --- MODAL --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  padding: 1rem;
+}
+
+.modal-contenido {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: modalEntrada 0.3s ease-out;
+}
+
+@keyframes modalEntrada {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-imagen-container {
+  width: 100%;
+  height: 300px;
+  flex-shrink: 0;
+}
+
+.modal-imagen-fullscreen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-texto {
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+}
+
+.modal-texto h3 {
+  color: #f97316;
+  margin-top: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.modal-texto p {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.modal-cerrar:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: rotate(90deg);
+}
+
+.botones-imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.imagen-boton {
+  padding: 8px 15px;
+  background-color: #f97316;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.imagen-boton:hover {
+  background-color: #ea580c;
+  transform: translateY(-2px);
+}
+
+.imagen-boton.activo {
+  background-color: #c2410c;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* --- REGLAS RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .slider-container .slick-prev { left: 5px; }
+    .slider-container .slick-next { right: 5px; }
+}
+
+@media (max-width: 768px) {
+  .hero-biblioteca {
+    height: 60vh;
+  }
+  .slider-jmind {
+    padding: 2rem 0;
+  }
+
+  .modal-contenido {
+    flex-direction: column;
+  }
+  .modal-imagen-container {
+    height: 200px;
+  }
+}
